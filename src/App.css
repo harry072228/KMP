@@ -1,6 +1,28 @@
 .App {
   text-align: center;
 }
+.busNameBox{
+  width: 500px;
+  height: 900px;
+  grid-auto-flow: column;
+   grid-template-columns: 21%;
+  padding:0 var(--_spacer) var(--_spacer);
+  overflow-y: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.busTime{
+  width: 500px;
+  height: 450px;
+  grid-auto-flow: column;
+  grid-template-columns: 21%;
+ padding:0 var(--_spacer) var(--_spacer);
+ overflow-y: auto;
+ overscroll-behavior-inline: contain;
+}
+.container{
+  display: flex;
+}
 
 .App-logo {
   height: 40vmin;

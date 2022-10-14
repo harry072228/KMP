@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    background-color: white;
+    border: solid 1px black;
+    justify-content: flex-start;
+}
+
+.route{
+    width: 50px;
+    margin: 40px;
+    color: black;
+    text-align: center;
+}
+
+.locationName{
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    color: black;
+}
+
+.name_tc{
+    color: black;
+}
+
+time{
+    color: black;
+}
