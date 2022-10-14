@@ -15,4 +15,8 @@ You will also see any lint errors in the console.
 就可以找到所有關於你想找的巴士站位置及時間
 
 2.install
+```code
 npm i @react-google-maps/api
+yarn add react-bootstrap@2
+```
+
