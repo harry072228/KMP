@@ -3,6 +3,13 @@
     background-color: white;
     border: solid 1px black;
     justify-content: flex-start;
+    cursor: pointer;
+}
+.containers{
+    display: flex;
+    background-color: white;
+    border: solid 1px black;
+    justify-content: flex-start;
 }
 
 .route{
@@ -21,10 +28,34 @@
     color: black;
 }
 
+.work{
+    color: #989EA2;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.dest_tc{
+    color: #989EA2;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .name_tc{
     color: black;
 }
 
-time{
-    color: black;
+.timeBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.time{
+    color: #3A63AE;
+}
+
+.googleMap{
+    border-bottom: solid 4px red;
 }

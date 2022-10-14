@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader,Marker  } from '@react-google-maps/api';
 import {Stop} from '../App'
+import styles from "../busStop.module.css";
+
 
 interface Props{
 markers:Stop[]
@@ -14,7 +16,7 @@ interface Center{
 
 const containerStyle = {
   width: '500px',
-  height: '450px'
+  height: '400px'
 };
 
 
@@ -45,6 +47,7 @@ const [center,setCenter] = useState<Center>( {			lat: 22.345076,
 
   return isLoaded ? (
     <>
+    <div className={styles.googleMap}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -61,7 +64,7 @@ const [center,setCenter] = useState<Center>( {			lat: 22.345076,
 ))}
 
       </GoogleMap>
-
+      </div>
 
      
       </>

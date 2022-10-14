@@ -1,10 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
+import logo from "./kmb_icon.png";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { BusStopName } from "./components/busStop";
 import GoogleBusMap from "./components/googleMap";
 import { BusStopDetail } from "./components/stopdetail";
+import haversine from "haversine-distance"
 
 export interface Stop {
   route: string;
@@ -58,11 +59,16 @@ interface Time {
   data_timestamp: string;
 }
 
+interface Position{
+  lat:number
+  lng:number
+}
+
 function App() {
   const [busStops, setbusStop] = useState<Stop[]>([]);
   const [busStopDetailData, setbusStopDetailData] = useState<Stop[]>([]);
+const [userPosition , setUserPosition] = useState<Position>()
 
-  // const [busTime, setbusTime] = useState<string>("");
 function timeStamp(eta:string,date:string) {
 let etaDate =new Date(eta)
 let dateDate   =new Date(date)
@@ -72,6 +78,35 @@ let dateNumber=Number(dateDate)
 return (Math.floor((etaNumber - dateNumber)/1000/60));
     
 }
+
+function getUserPosition(){
+  navigator.geolocation.getCurrentPosition(function(position) {
+    let loctionObj:any={}
+    // loctionArray.push(position.coords.latitude,position.coords.longitude)
+    loctionObj["lat"]=position.coords.latitude
+    loctionObj["lng"]=position.coords.longitude
+    setUserPosition(loctionObj)
+
+  });
+  
+}
+
+
+
+//First point in your haversine calculation
+let point1 = userPosition
+
+//Second point in your haversine calculation
+let point2 = { lat: 22.322088, lng: 114.214272 }
+if( point1){
+  let haversine_m = haversine(point1, point2); //Results in meters (default)
+  let haversine_km = haversine_m /1000; //Results in kilometers
+//   console.log("distance (in meters): " + haversine_m + "m");
+// console.log("distance (in kilometers): " + haversine_km + "km");
+
+}
+
+
 
 
   async function fetchRoute() {
@@ -121,7 +156,7 @@ return (Math.floor((etaNumber - dateNumber)/1000/60));
 for(let result of filteredResult){
   let combineTimeDataArray=[]
   let timeDatas:any=await fetchTime(result.route, result.stop, result.bound)
-  console.log("timeDatas:",timeDatas);
+  // console.log("timeDatas:",timeDatas);
   
 
 for(let timeData of timeDatas){
@@ -133,7 +168,7 @@ combineTimeDataArray.push(time)
 }
 let obj:any={}
 
-console.log("combineTimeDataArray:",combineTimeDataArray);
+// console.log("combineTimeDataArray:",combineTimeDataArray);
 
 obj["times"]=combineTimeDataArray
 
@@ -185,12 +220,15 @@ return filteredTimes
 
   useEffect(() => {
     fetchRoute();
-  
-  }, [setbusStop]);
+    getUserPosition()
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
+        <img className="logo" src={logo}
+        width={100}
+        height={50}/>
         <div className="container">
           <div className="busNameBox">
             {busStops.map((busName, index) => (

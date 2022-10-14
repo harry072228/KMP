@@ -22,8 +22,8 @@ interface Stop{
 		<div className={styles.container} onClick={stop.onSubmit}>
 		<div className={styles.route}>{stop.route}</div>	
   <div className={styles.locationName}>
-    <div>{stop.orig_tc}</div>
-    <div>{stop.dest_tc}</div>
+    <div><span className={styles.work}>往</span>{stop.orig_tc}</div>
+    <div className={styles.dest_tc}>{stop.dest_tc}</div>
     </div>
 
 		</div>

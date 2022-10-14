@@ -1,19 +1,28 @@
 .App {
   text-align: center;
+  background-size: auto;
 }
 .busNameBox{
   width: 500px;
-  height: 900px;
+  height: 800px;
   grid-auto-flow: column;
    grid-template-columns: 21%;
   padding:0 var(--_spacer) var(--_spacer);
   overflow-y: auto;
   overscroll-behavior-inline: contain;
+  margin-right: 20px;
+
+}
+
+.logo{
+position: absolute;
+left: 10px;
+top: 10px;
 }
 
 .busTime{
   width: 500px;
-  height: 450px;
+  height: 400px;
   grid-auto-flow: column;
   grid-template-columns: 21%;
  padding:0 var(--_spacer) var(--_spacer);
@@ -36,7 +45,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:#fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -46,15 +55,4 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
